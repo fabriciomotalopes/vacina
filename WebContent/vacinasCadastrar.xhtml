@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="corpo">
+
+		<title>Cadastrar Vacinas</title>
+		<h:form>
+
+			<h2>Vacinas</h2>
+			<p:tabView>
+				<p:tab title="Cadastrar Vacinas">
+					<p:separator />
+					<h:panelGrid columns="4" cellpadding="10">
+
+						<p:outputLabel value="Nome da Vacina:" />
+						<p:inputText value="" size="55" placeholder="Ex: Brucelose" />
+
+						<p:outputLabel value="Dosagem da vacina" />
+						<p:inputText mask="" placeholder="Ex: Ml" size="55" />
+
+						<p:outputLabel value="Especificação" />
+						<p:inputText mask="" placeholder="Ex: Doença " size="55" />
+
+						<p:outputLabel value="Data de Validade:" />
+						<p:calendar locale="pt"    pattern="dd/MM/yyyy" placeholder="00/00/0000"/>
+
+
+					</h:panelGrid>
+
+				</p:tab>
+
+
+			</p:tabView>
+		</h:form>
+
+		<h:form>
+			<p:panelGrid style="border:0px">
+				<p:commandButton value="Salvar" />
+
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

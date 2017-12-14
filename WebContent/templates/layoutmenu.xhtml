@@ -1,0 +1,34 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+	
+		<h:form>
+		
+			<p:panelMenu style="width:250px">
+			
+				<p:submenu label="ANIMAL">
+					<p:menuitem value="Cadastrar Animal" icon="icon-users" outcome="animalCadastrar.xhtml" />
+					<p:menuitem value="Listar Animal" icon="icon-user" outcome="animalListar.xhtml"/>	
+				</p:submenu>
+				
+				<p:submenu label="VACINAS">
+					<p:menuitem value="Cadastrar Vacinas" icon="icon-user" outcome="vacinasCadastrar.xhtml"/>
+					<p:menuitem value="listar Vacina" icon="icon-user" outcome="vacinasListar.xhtml"/>
+				</p:submenu>
+				
+				<p:submenu label="USUÁRIO">
+					<p:menuitem value="Cadastrar Usuário" icon="icon-user" outcome="usuarioCadastrar.xhtml"/>
+					<p:menuitem value="Listar Usuário" icon="icon-user" outcome="usuarioListar.xhtml"/>
+				</p:submenu>
+				
+				<p:submenu label="RELATÓRIO">
+					<p:menuitem value="Relatório Vacinas" icon="icon-user" outcome="vacinasRelatorio.xhtml"/>
+				</p:submenu>
+								
+			</p:panelMenu>
+				
+		</h:form>
+
+</ui:composition>

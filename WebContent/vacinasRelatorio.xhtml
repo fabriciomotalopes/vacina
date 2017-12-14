@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="corpo">
+
+		<title>Listar Vacinas</title>
+
+			<h2>Vacinas</h2>
+			
+			<p:tabView>
+			
+				<p:tab title="Relatório de Vacinas">
+				
+					<p:separator />
+
+					<h:form>
+
+						<p:outputLabel value="Nome da Vacina" />
+						<p:inputText size="50" />
+						<p:commandButton value="Buscar" />
+
+						<p:separator />
+						
+						<p:dataTable emptyMessage="Nenhum Registro Encontrado">
+
+							<p:column headerText="Id">
+								<h:outputText value="" />
+							</p:column>
+
+							<p:column headerText="Id do Animal">
+								<h:outputText value="" />
+							</p:column>
+
+							<p:column headerText="Classificação">
+								<h:outputText value="" />
+							</p:column>
+
+							<p:column headerText="Vacinas">
+								<h:outputText value="" />
+							</p:column>
+
+
+						</p:dataTable>
+
+					</h:form>
+
+				</p:tab>
+
+			</p:tabView>
+			
+	</ui:define>
+
+</ui:composition>
+

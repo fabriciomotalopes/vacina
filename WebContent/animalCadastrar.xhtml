@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="corpo">
+
+		<title>Cadastrar Animal</title>
+
+		<h:form>
+
+			<h2>Animal</h2>
+
+			<p:tabView>
+
+				<p:tab title="Cadastrar Animal">
+
+					<p:separator />
+
+					<h:panelGrid columns="4" cellpadding="10">
+
+						<p:outputLabel value="Genero:" />
+						<p:inputText value="" size="55" placeholder="Ex: M/F" />
+
+						<p:outputLabel value="Classificacao" />
+						<p:inputMask mask="" placeholder="Ex: Corte/Leiteiro " size="55" />
+
+						<p:outputLabel value="peso" />
+						<p:inputMask mask="" placeholder="Ex: 200,20" size="55" />
+
+						<p:outputLabel value="Data de Nascimento:" />
+						<p:calendar locale="pt"    pattern="dd/MM/yyyy" placeholder="00/00/0000"/>
+
+
+
+					</h:panelGrid>
+
+				</p:tab>
+
+
+			</p:tabView>
+		</h:form>
+
+		<h:form>
+			<p:panelGrid style="border:0px">
+				<p:commandButton value="Salvar" />
+
+			</p:panelGrid>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+

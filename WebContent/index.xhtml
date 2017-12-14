@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Pagina de Login</title>
+	<link href="resources/adamantium-layout/css/login.css" type="text/css"
+		rel="stylesheet" />
+</h:head>
+
+<h:body style="padding-top: 60px; background-color: #fff">
+
+	<h4 class="form-siging-header">Faça login na sua conta</h4>
+	
+	<h:form styleClass="form-login" >
+	
+		<h:panelGrid columns="2" styleClass="grid">
+		
+			<p:outputLabel value="Login" />
+			<p:inputText value="" placeholder="usuario@dominio.com" />
+
+			<p:outputLabel value="Senha"></p:outputLabel>
+			<p:password placeholder="Senha"></p:password>
+
+			<p:commandButton value="Logar" action="principal.xhtml?faces-redirect=true"/>
+			
+		</h:panelGrid>
+		
+	</h:form>
+
+
+</h:body>
+</html>
+
+
+
