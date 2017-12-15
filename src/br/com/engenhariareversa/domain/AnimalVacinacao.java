@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
@@ -34,6 +35,7 @@ public class AnimalVacinacao {
 	@Column(name = "id_animal_vacinacao")
 	private Long idAnimalVacinacao;
 	
+	@NotNull(message = "O campo data da vacinação é Obrigatório.")
 	@Temporal(value = TemporalType.TIMESTAMP)
 	@Column(name = "data_vacinacao", nullable = false)
 	private Date dataVacinacao;
@@ -44,6 +46,7 @@ public class AnimalVacinacao {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	private Animal animal;
 	
+	@NotNull(message = "O campo vacina é obrigatório.")
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idVacina",insertable=true, updatable=true)
     @Fetch(FetchMode.JOIN)

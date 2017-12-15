@@ -8,7 +8,8 @@
 		<f:metadata>
 			<f:viewParam name="acao" value="#{animalBean.acao}" />
 			<f:viewParam name="idAnimal" value="#{animalBean.idAnimal}" />
-			<f:event listener="#{animalBean.carregarVacinasVacinarAnimal}" type="preRenderView" />
+			<f:event listener="#{animalBean.carregarVacinasVacinarAnimal}"
+				type="preRenderView" />
 		</f:metadata>
 	</ui:define>
 
@@ -29,7 +30,7 @@
 					<h:panelGrid columns="4" cellpadding="10">
 
 						<p:outputLabel value="Genero:" />
-						<p:outputLabel value="#{animalBean.animalCadastrar.genero}"/>
+						<p:outputLabel value="#{animalBean.animalCadastrar.genero}" />
 
 						<p:outputLabel value="Classificacao" />
 						<p:outputLabel value="#{animalBean.animalCadastrar.classificacao}" />
@@ -38,11 +39,14 @@
 						<p:outputLabel value="#{animalBean.animalCadastrar.peso}" />
 
 						<p:outputLabel value="Data de Nascimento:" />
-						<p:outputLabel value="#{animalBean.animalCadastrar.dataNascimento}"/>
+						<p:outputLabel
+							value="#{animalBean.animalCadastrar.dataNascimento}" />
 
 						<p:outputLabel value="Data da Vacina:" />
 						<p:calendar value="#{animalBean.animalVacinacao.dataVacinacao}"
-							locale="pt" pattern="dd/MM/yyyy" placeholder="00/00/0000" />
+							locale="pt" pattern="dd/MM/yyyy" placeholder="00/00/0000">
+							<f:validateBean />
+						</p:calendar>
 
 						<p:outputLabel value="Selecione a Vacina a ser Aplicada: " />
 						<p:selectOneMenu value="#{animalBean.vacina}"
@@ -50,6 +54,7 @@
 							<f:selectItem itemValue="" itemLabel="Selecione uma Vacina" />
 							<f:selectItems value="#{animalBean.listVacinas}" var="vacina"
 								itemValue="#{vacina}" itemLabel="#{vacina.nomeVaciana}" />
+							<f:validateBean />
 						</p:selectOneMenu>
 
 					</h:panelGrid>
@@ -60,7 +65,8 @@
 			</p:tabView>
 
 			<h:panelGrid columns="4" style="border:0px">
-				<p:commandButton value="Vacinar Animal" action="#{animalBean.vacinarAnimal()}" update=":msgGlobal" />
+				<p:commandButton value="Vacinar Animal"
+					action="#{animalBean.vacinarAnimal()}" update=":msgGlobal" />
 
 				<p:button value="Voltar" outcome="animalListar.xhtml" />
 

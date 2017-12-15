@@ -30,19 +30,27 @@
 
 						<p:outputLabel value="Genero:" />
 						<p:inputText  size="55" placeholder="Ex: M/F" value="#{animalBean.animalCadastrar.genero}"
-						readonly="#{animalBean.acao == 'excluir'}" />
+						readonly="#{animalBean.acao == 'excluir'}" >
+							<f:validateBean />
+						</p:inputText>
 
 						<p:outputLabel value="Classificacao" />
 						<p:inputMask mask="" placeholder="Ex: Corte/Leiteiro " size="55" value="#{animalBean.animalCadastrar.classificacao}"
-						readonly="#{animalBean.acao == 'excluir'}" />
+						readonly="#{animalBean.acao == 'excluir'}" >
+							<f:validateBean />
+						</p:inputMask>
 
 						<p:outputLabel value="peso" />
-						<p:inputMask mask="" placeholder="Ex: 200,20" size="55" value="#{animalBean.animalCadastrar.peso}"
-						readonly="#{animalBean.acao == 'excluir'}"/>
+						<p:inputMask mask="" placeholder="Ex: 200.20" size="55" value="#{animalBean.animalCadastrar.peso}"
+						readonly="#{animalBean.acao == 'excluir'}">
+							<f:validateBean />
+						</p:inputMask>
 
 						<p:outputLabel value="Data de Nascimento:" />
 						<p:calendar locale="pt"    pattern="dd/MM/yyyy" placeholder="00/00/0000" value="#{animalBean.animalCadastrar.dataNascimento}"
-						readonly="#{animalBean.acao == 'excluir'}"/>
+						readonly="#{animalBean.acao == 'excluir'}">
+							<f:validateBean />
+						</p:calendar>>
 
 
 

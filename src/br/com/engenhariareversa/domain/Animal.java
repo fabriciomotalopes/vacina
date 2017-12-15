@@ -17,8 +17,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "animal")
@@ -32,16 +37,24 @@ public class Animal {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_animal")
 	private Long idAnimal;
-
+	
+	@NotEmpty(message = "O campo classificação é Obrigatório.")
+	@Size(min = 1, max = 8, message = "Quanitidade de caracteres Inválido.")
 	@Column(name = "classificacao", length = 8, nullable = false)
 	private String classificacao;
-
+	
+	@NotEmpty(message = "O campo genero é Obrigatório.")
+	@Size(min = 1, max = 8, message = "Quanitidade de caracteres Inválido.")
 	@Column(name = "genero", length = 4, nullable = false)
 	private String genero;
-
+	
+	@NotNull(message = "O campo peso é Obrigatório.")
+	@DecimalMin(value = "0.0", message = "Informe um peso maior que 0 para o peso.")
+	@DecimalMax(value = "5000.000", message = "Informe um peso maior que 5000kg para o peso.")
 	@Column(name = "peso", precision = 7, scale = 3, nullable = false)
 	private Double peso;
 
+	@NotNull(message = "O campo data de nascimento é Obrigatório.")
 	@Temporal(value = TemporalType.TIMESTAMP)
 	@Column(name = "data_nasc", nullable = false)
 	private Date dataNascimento;

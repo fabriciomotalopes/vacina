@@ -34,26 +34,36 @@
 						<p:outputLabel value="Nome:" />
 						<p:inputText value="#{usuarioBean.usuarioCadastrar.nome}"
 							size="55" placeholder="Ex: Seu Nome"
-							readonly="#{usuarioBean.acao == 'Excluir'}" />
+							readonly="#{usuarioBean.acao == 'Excluir'}"  >
+							<f:validateBean />
+						</p:inputText>
 
 						<p:outputLabel value="CPF:" />
 						<p:inputMask value="#{usuarioBean.usuarioCadastrar.cpf}"
 							mask="99999999999" size="55" placeholder="Ex: 00000000000"
-							readonly="#{usuarioBean.acao == 'Excluir'}" />
+							readonly="#{usuarioBean.acao == 'Excluir'}"  >
+							<f:validateBean />
+						</p:inputMask>
 
 						<p:outputLabel value="E-mail:" />
 						<p:inputText value="#{usuarioBean.usuarioCadastrar.email}"
 							placeholder="example@example.com.br" size="55"
-							readonly="#{usuarioBean.acao == 'Excluir'}" />
+							readonly="#{usuarioBean.acao == 'Excluir'}"  >
+							<f:validateBean />
+						</p:inputText>
 
 						<p:outputLabel value="Senha:" />
 						<p:password value="#{usuarioBean.usuarioCadastrar.senha}"
-							size="55" readonly="#{usuarioBean.acao == 'Excluir'}" />
+							size="55" readonly="#{usuarioBean.acao == 'Excluir'}"  >
+							<f:validateBean />
+						</p:password>
 
 						<p:outputLabel value="Endereço:" />
 						<p:inputText value="#{usuarioBean.usuarioCadastrar.endereco}"
 							placeholder="Ex: Rua A , 000 , bairro A " size="55"
-							readonly="#{usuarioBean.acao == 'Excluir'}" />
+							readonly="#{usuarioBean.acao == 'Excluir'}"  >
+							<f:validateBean />
+						</p:inputText>
 
 
 					</h:panelGrid>

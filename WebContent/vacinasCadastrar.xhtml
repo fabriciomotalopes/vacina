@@ -27,24 +27,30 @@
 						<p:outputLabel value="Nome da Vacina:" />
 						<p:inputText value="#{vacinaBean.vacinaCadastrar.nomeVaciana}"
 							size="55" placeholder="Ex: Brucelose"
-							readonly="#{vacinaBean.acao == 'excluir'}" />
+							readonly="#{vacinaBean.acao == 'excluir'}">
+							<f:validateBean />
+						</p:inputText>
 
 						<p:outputLabel value="Dosagem da vacina" />
 						<p:inputText value="#{vacinaBean.vacinaCadastrar.dosagem}"
 							placeholder="Ex: Ml" size="55"
-							readonly="#{vacinaBean.acao == 'excluir'}" />
+							readonly="#{vacinaBean.acao == 'excluir'}">
+							<f:validateBean />
+						</p:inputText>
 
 						<p:outputLabel value="Especificação" />
 						<p:inputText value="#{vacinaBean.vacinaCadastrar.especificacao}"
 							placeholder="Ex: Doença " size="55"
-							readonly="#{vacinaBean.acao == 'excluir'}" />
+							readonly="#{vacinaBean.acao == 'excluir'}">
+							<f:validateBean />
+						</p:inputText>
 
 						<p:outputLabel value="Data de Validade:" />
 						<p:calendar value="#{vacinaBean.vacinaCadastrar.dataValidade}"
 							locale="pt" pattern="dd/MM/yyyy" placeholder="00/00/0000"
-							readonly="#{vacinaBean.acao == 'excluir'}" />
-
-
+							readonly="#{vacinaBean.acao == 'excluir'}">
+							<f:validateBean />
+						</p:calendar>
 					</h:panelGrid>
 
 				</p:tab>
@@ -59,9 +65,8 @@
 					update=":msgGlobal :frmCadVacina"
 					rendered="#{vacinaBean.acao == 'novo'}" />
 
-				<p:commandButton value="Excluir"
-					action="#{vacinaBean.excluir()}" update=":msgGlobal"
-					rendered="#{vacinaBean.acao == 'excluir'}" />
+				<p:commandButton value="Excluir" action="#{vacinaBean.excluir()}"
+					update=":msgGlobal" rendered="#{vacinaBean.acao == 'excluir'}" />
 
 				<p:commandButton value="Editar"
 					actionListener="#{vacinaBean.editar}" update=":msgGlobal"

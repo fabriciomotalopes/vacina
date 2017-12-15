@@ -14,7 +14,7 @@ import br.com.engenhariareversa.domain.Usuario;
 
 public class UsuarioDAOTest {
 
-	@Ignore
+
 	@Test
 	public void salvar() {
 		
@@ -23,9 +23,9 @@ public class UsuarioDAOTest {
 		Usuario us1 = new Usuario();
 
 		us1.setCpf("12345678912");
-		us1.setEmail("fabricio4@gmail.com");
-		us1.setEndereco("rua do topografo, 68");
-		us1.setNome("Fabricio");
+		us1.setEmail("teste@teste.com");
+		us1.setEndereco("Rua Teste, 68 - Bairro Teste");
+		us1.setNome("Andre");
 		us1.setSenha("123456");	
 
 		dao.salvar(us1);
@@ -81,6 +81,7 @@ public class UsuarioDAOTest {
 
 	}
 	
+	@Ignore
 	@Test	
 	public void litart() {
 		

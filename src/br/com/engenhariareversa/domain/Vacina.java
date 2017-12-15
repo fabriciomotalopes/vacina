@@ -17,8 +17,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "vacina")
@@ -31,16 +34,23 @@ public class Vacina {
 	@Column(name = "id_vacina")
 	private Long idVacina;
 
+	@NotEmpty(message = "O campo nome da vacina é Obrigatório.")
+	@Size(min = 1, max = 60, message = "Quanitidade de caracteres Inválido.")
 	@Column(name = "nome_vaciana", length = 60, nullable = false)
 	private String nomeVaciana;
 
+	@NotEmpty(message = "O campo dosagem é Obrigatório.")
+	@Size(min = 1, max = 6, message = "Quanitidade de caracteres Inválido.")
 	@Column(name = "dosagem", length = 6, nullable = false)
 	private String dosagem;
 
+	@NotNull(message = "O campo data de validade é Obrigatório.")
 	@Temporal(value = TemporalType.TIMESTAMP)
 	@Column(name = "data_validade", nullable = false)
 	private Date dataValidade;
 
+	@NotEmpty(message = "O campo especificação é Obrigatório.")
+	@Size(min = 1, max = 60, message = "Quanitidade de caracteres Inválido.")
 	@Column(name = "especificacao", length = 60, nullable = false)
 	private String especificacao;
 

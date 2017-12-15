@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "usuario")
@@ -21,19 +24,29 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_usuario")
 	private Long idUsuario;
-
+	
+	@NotEmpty(message = "O campo nome é Obrigatório.")
+	@Size(min = 1, max = 8, message = "Quanitidade de caracteres Inválido.")
 	@Column(name = "nome", length = 60, nullable = false)
 	private String nome;
 
+	@NotEmpty(message = "O campo cpf é Obrigatório.")
+	@Size(min = 1, max = 11, message = "Quanitidade de caracteres Inválido.")
 	@Column(name = "cpf", length = 11, nullable = false)
 	private String cpf;
 
+	@NotEmpty(message = "O campo e-mail é Obrigatório.")
+	@Size(min = 1, max = 30, message = "Quanitidade de caracteres Inválido.")
 	@Column(name = "email", length = 30, nullable = false)
 	private String email;
 	
+	@NotEmpty(message = "O campo senha é Obrigatório.")
+	@Size(min = 1, max = 20, message = "Quanitidade de caracteres Inválido.")
 	@Column(name = "senha", length = 20, nullable = false)
 	private String senha;
 
+	@NotEmpty(message = "O campo endereço é Obrigatório.")
+	@Size(min = 1, max = 100, message = "Quanitidade de caracteres Inválido.")
 	@Column(name = "endereco", length = 100, nullable = false)
 	private String endereco;
 
