@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import br.com.engenhariareversa.domain.Animal;
 import br.com.engenhariareversa.domain.AnimalVacinacao;
 import br.com.engenhariareversa.util.HibernateUtil;
 
@@ -110,4 +111,26 @@ public class AnimalVacinacaoDAO {
 			session.close();
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<AnimalVacinacao> buscarAnimal(Animal idObjeto) {
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		List<AnimalVacinacao> objetos = null;
+
+		try {
+
+			Query query = session.getNamedQuery("AnimalVacinacao.buscarAnimal");
+			query.setEntity("animal", idObjeto);
+			objetos = query.list();
+
+		} catch (RuntimeException ex) {
+			throw ex;
+		} finally {
+			session.close();
+		}
+
+		return objetos;
+	}
+
 }

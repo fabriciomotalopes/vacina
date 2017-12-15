@@ -4,6 +4,14 @@
 	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml"
 	xmlns:f="http://java.sun.com/jsf/core">
 
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="acao" value="#{usuarioBean.acao}" />
+			<f:viewParam name="idUsuario" value="#{usuarioBean.codigo}" />
+			<f:event listener="#{usuarioBean.carregarCadastro}"
+				type="preRenderView" />
+		</f:metadata>
+	</ui:define>
 
 	<ui:define name="corpo">
 
@@ -18,30 +26,34 @@
 					<p:separator />
 
 					<h:panelGrid id="pnlGrdCadUsuario" columns="4" cellpadding="10">
-
+					
 						<p:outputLabel value="IdUsuário:" />
 						<p:inputText value="#{usuarioBean.usuarioCadastrar.idUsuario}"
 							size="55" readonly="true" />
 
 						<p:outputLabel value="Nome:" />
 						<p:inputText value="#{usuarioBean.usuarioCadastrar.nome}"
-							size="55" placeholder="Ex: Seu Nome" />
+							size="55" placeholder="Ex: Seu Nome"
+							readonly="#{usuarioBean.acao == 'Excluir'}" />
 
 						<p:outputLabel value="CPF:" />
 						<p:inputMask value="#{usuarioBean.usuarioCadastrar.cpf}"
-							mask="99999999999" size="55" placeholder="Ex: 00000000000" />
+							mask="99999999999" size="55" placeholder="Ex: 00000000000"
+							readonly="#{usuarioBean.acao == 'Excluir'}" />
 
 						<p:outputLabel value="E-mail:" />
 						<p:inputText value="#{usuarioBean.usuarioCadastrar.email}"
-							 placeholder="example@example.com.br" size="55" />
+							placeholder="example@example.com.br" size="55"
+							readonly="#{usuarioBean.acao == 'Excluir'}" />
 
 						<p:outputLabel value="Senha:" />
 						<p:password value="#{usuarioBean.usuarioCadastrar.senha}"
-							size="55" />
+							size="55" readonly="#{usuarioBean.acao == 'Excluir'}" />
 
 						<p:outputLabel value="Endereço:" />
 						<p:inputText value="#{usuarioBean.usuarioCadastrar.endereco}"
-							placeholder="Ex: Rua A , 000 , bairro A " size="55" />
+							placeholder="Ex: Rua A , 000 , bairro A " size="55"
+							readonly="#{usuarioBean.acao == 'Excluir'}" />
 
 
 					</h:panelGrid>
@@ -50,11 +62,22 @@
 
 			</p:tabView>
 
-			<p:panelGrid style="border:0px">
+			<h:panelGrid columns="4" style="border:0px">
 				<p:commandButton value="Salvar"
-					actionListener="#{usuarioBean.salvar}" update=":msgGlobal :frmCadUsuario" />
+					actionListener="#{usuarioBean.salvar}"
+					update=":msgGlobal :frmCadUsuario"
+					rendered="#{usuarioBean.acao == 'Novo'}" />
 
-			</p:panelGrid>
+				<p:commandButton value="Editar"
+					actionListener="#{usuarioBean.editar}" update=":msgGlobal"
+					rendered="#{usuarioBean.acao == 'Editar'}" />
+
+				<p:commandButton value="Excluir" action="#{usuarioBean.excluir()}"
+					update=":msgGlobal" rendered="#{usuarioBean.acao == 'Excluir'}" />
+
+				<p:button value="Voltar" outcome="usuarioListar.xhtml" />
+
+			</h:panelGrid>
 		</h:form>
 	</ui:define>
 

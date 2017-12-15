@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="acao" value="#{animalBean.acao}" />
+			<f:viewParam name="idAnimal" value="#{animalBean.idAnimal}" />
+			<f:event listener="#{animalBean.carregarVacinasVacinarAnimal}" type="preRenderView" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="corpo">
+
+		<title>Vacinar Animal</title>
+
+		<h:form id="frmCadAnimal">
+
+			<h2>Animal</h2>
+
+			<p:tabView>
+
+				<p:tab title="Vacinar Animal">
+
+					<p:separator />
+
+					<h:panelGrid columns="4" cellpadding="10">
+
+						<p:outputLabel value="Genero:" />
+						<p:outputLabel value="#{animalBean.animalCadastrar.genero}"/>
+
+						<p:outputLabel value="Classificacao" />
+						<p:outputLabel value="#{animalBean.animalCadastrar.classificacao}" />
+
+						<p:outputLabel value="peso" />
+						<p:outputLabel value="#{animalBean.animalCadastrar.peso}" />
+
+						<p:outputLabel value="Data de Nascimento:" />
+						<p:outputLabel value="#{animalBean.animalCadastrar.dataNascimento}"/>
+
+						<p:outputLabel value="Data da Vacina:" />
+						<p:calendar value="#{animalBean.animalVacinacao.dataVacinacao}"
+							locale="pt" pattern="dd/MM/yyyy" placeholder="00/00/0000" />
+
+						<p:outputLabel value="Selecione a Vacina a ser Aplicada: " />
+						<p:selectOneMenu value="#{animalBean.vacina}"
+							converter="vacinaConverter">
+							<f:selectItem itemValue="" itemLabel="Selecione uma Vacina" />
+							<f:selectItems value="#{animalBean.listVacinas}" var="vacina"
+								itemValue="#{vacina}" itemLabel="#{vacina.nomeVaciana}" />
+						</p:selectOneMenu>
+
+					</h:panelGrid>
+
+				</p:tab>
+
+
+			</p:tabView>
+
+			<h:panelGrid columns="4" style="border:0px">
+				<p:commandButton value="Vacinar Animal" action="#{animalBean.vacinarAnimal()}" update=":msgGlobal" />
+
+				<p:button value="Voltar" outcome="animalListar.xhtml" />
+
+			</h:panelGrid>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+

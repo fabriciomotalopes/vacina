@@ -5,7 +5,11 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import br.com.engenhariareversa.dao.AnimalDAO;
+import br.com.engenhariareversa.dao.AnimalVacinacaoDAO;
 import br.com.engenhariareversa.dao.UsuarioDAO;
+import br.com.engenhariareversa.domain.Animal;
+import br.com.engenhariareversa.domain.AnimalVacinacao;
 import br.com.engenhariareversa.domain.Usuario;
 
 public class UsuarioDAOTest {
@@ -58,7 +62,8 @@ public class UsuarioDAOTest {
 			dao.excluir(usuario);
 		}
 	}
-		
+	
+	@Ignore
 	@Test
 	public void editar() {
 		
@@ -75,4 +80,20 @@ public class UsuarioDAOTest {
 		dao.editar(us1);
 
 	}
+	
+	@Test	
+	public void litart() {
+		
+		AnimalDAO animalDAO = new AnimalDAO();
+		
+		Animal animal = animalDAO.buscarPorId(1L);
+
+		AnimalVacinacaoDAO dao = new AnimalVacinacaoDAO();
+		List<AnimalVacinacao> usuarios = dao.buscarAnimal(animal);
+
+		for (AnimalVacinacao usuario : usuarios) {
+			System.out.println(usuario.toString());
+		}
+	}
+	
 }

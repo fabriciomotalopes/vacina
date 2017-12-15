@@ -9,7 +9,7 @@
 
         <!-- Configurações da conexão -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/engenharia_reversa</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/engenharia_reversa?useSSL=false</property>
         <property name="connection.username">root</property>
         <property name="connection.password">q1w2e3r4</property>
 

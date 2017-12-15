@@ -16,11 +16,16 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Table(name = "animal_vacinacao")
 @NamedQueries({
 	@NamedQuery(name = "AnimalVacinacao.listar", query = "SELECT animalVacinacao FROM AnimalVacinacao animalVacinacao"),
-	@NamedQuery(name = "AnimalVacinacao.buscarPorId", query = "SELECT animalVacinacao FROM AnimalVacinacao animalVacinacao WHERE animalVacinacao.idAnimalVacinacao = :idAnimalVacinacao")
+	@NamedQuery(name = "AnimalVacinacao.buscarPorId", query = "SELECT animalVacinacao FROM AnimalVacinacao animalVacinacao WHERE animalVacinacao.idAnimalVacinacao = :idAnimalVacinacao"),
+	@NamedQuery(name = "AnimalVacinacao.buscarAnimal", query = "SELECT animalVacinacao FROM AnimalVacinacao animalVacinacao WHERE animalVacinacao.animal = :animal")
 })
 public class AnimalVacinacao {
 	
@@ -34,11 +39,15 @@ public class AnimalVacinacao {
 	private Date dataVacinacao;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "animal_id_animal", referencedColumnName = "id_animal")
+    @JoinColumn(name="idAnimal",insertable=true, updatable=true)
+    @Fetch(FetchMode.JOIN)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	private Animal animal;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "vacina_id_vacina", referencedColumnName = "id_vacina")
+    @JoinColumn(name="idVacina",insertable=true, updatable=true)
+    @Fetch(FetchMode.JOIN)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	private Vacina vacina;
 
 	public Long getIdAnimalVacinacao() {
@@ -78,5 +87,32 @@ public class AnimalVacinacao {
 		return "AnimalVacinacao [idAnimalVacinacao=" + idAnimalVacinacao + ", dataVacinacao=" + dataVacinacao
 				+ ", animal=" + animal + ", vacina=" + vacina + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idAnimalVacinacao == null) ? 0 : idAnimalVacinacao.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AnimalVacinacao other = (AnimalVacinacao) obj;
+		if (idAnimalVacinacao == null) {
+			if (other.idAnimalVacinacao != null)
+				return false;
+		} else if (!idAnimalVacinacao.equals(other.idAnimalVacinacao))
+			return false;
+		return true;
+	}
+	
+	
 	
 }

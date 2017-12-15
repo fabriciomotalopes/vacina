@@ -5,10 +5,18 @@
 	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml"
 	xmlns:f="http://java.sun.com/jsf/core">
 
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="acao" value="#{vacinaBean.acao}" />
+			<f:viewParam name="idVacina" value="#{vacinaBean.idVacina}" />
+			<f:event listener="#{vacinaBean.listarVacinaId}" type="preRenderView" />
+		</f:metadata>
+	</ui:define>
+
 	<ui:define name="corpo">
 
 		<title>Cadastrar Vacinas</title>
-		<h:form>
+		<h:form id="frmCadVacina">
 
 			<h2>Vacinas</h2>
 			<p:tabView>
@@ -17,16 +25,24 @@
 					<h:panelGrid columns="4" cellpadding="10">
 
 						<p:outputLabel value="Nome da Vacina:" />
-						<p:inputText value="" size="55" placeholder="Ex: Brucelose" />
+						<p:inputText value="#{vacinaBean.vacinaCadastrar.nomeVaciana}"
+							size="55" placeholder="Ex: Brucelose"
+							readonly="#{vacinaBean.acao == 'excluir'}" />
 
 						<p:outputLabel value="Dosagem da vacina" />
-						<p:inputText mask="" placeholder="Ex: Ml" size="55" />
+						<p:inputText value="#{vacinaBean.vacinaCadastrar.dosagem}"
+							placeholder="Ex: Ml" size="55"
+							readonly="#{vacinaBean.acao == 'excluir'}" />
 
 						<p:outputLabel value="Especificação" />
-						<p:inputText mask="" placeholder="Ex: Doença " size="55" />
+						<p:inputText value="#{vacinaBean.vacinaCadastrar.especificacao}"
+							placeholder="Ex: Doença " size="55"
+							readonly="#{vacinaBean.acao == 'excluir'}" />
 
 						<p:outputLabel value="Data de Validade:" />
-						<p:calendar locale="pt"    pattern="dd/MM/yyyy" placeholder="00/00/0000"/>
+						<p:calendar value="#{vacinaBean.vacinaCadastrar.dataValidade}"
+							locale="pt" pattern="dd/MM/yyyy" placeholder="00/00/0000"
+							readonly="#{vacinaBean.acao == 'excluir'}" />
 
 
 					</h:panelGrid>
@@ -35,13 +51,25 @@
 
 
 			</p:tabView>
-		</h:form>
 
-		<h:form>
-			<p:panelGrid style="border:0px">
-				<p:commandButton value="Salvar" />
+			<h:panelGrid columns="4" style="border:0px">
 
-			</p:panelGrid>
+				<p:commandButton value="Salvar"
+					actionListener="#{vacinaBean.salvar}"
+					update=":msgGlobal :frmCadVacina"
+					rendered="#{vacinaBean.acao == 'novo'}" />
+
+				<p:commandButton value="Excluir"
+					action="#{vacinaBean.excluir()}" update=":msgGlobal"
+					rendered="#{vacinaBean.acao == 'excluir'}" />
+
+				<p:commandButton value="Editar"
+					actionListener="#{vacinaBean.editar}" update=":msgGlobal"
+					rendered="#{vacinaBean.acao == 'editar'}" />
+
+				<p:button value="Voltar" outcome="vacinasListar.xhtml" />
+
+			</h:panelGrid>
 		</h:form>
 	</ui:define>
 

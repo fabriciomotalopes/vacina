@@ -58,7 +58,7 @@ public class VacinaDAO {
 
 		try {
 			
-			Query query = session.getNamedQuery("Usuario.buscarPorId");			
+			Query query = session.getNamedQuery("Vacina.buscarPorId");			
 			query.setLong("idVacina", idObjeto);			
 			objeto = (Vacina) query.uniqueResult();
 			
