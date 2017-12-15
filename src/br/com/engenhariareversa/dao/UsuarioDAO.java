@@ -110,5 +110,26 @@ public class UsuarioDAO {
 			session.close();
 		}
 	}
+	
+	public Usuario autenticar(String cpf, String senha){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Usuario objeto = null;
+
+		try {
+			
+			Query query = session.getNamedQuery("Usuario.autenticar");			
+			query.setString("cpf", cpf);	
+			query.setString("senha", senha);	
+			objeto = (Usuario) query.uniqueResult();
+			
+		} catch (RuntimeException ex) {
+			throw ex;
+		} finally {
+			session.close();
+		}
+		
+		return objeto;
+		
+	}
 
 }

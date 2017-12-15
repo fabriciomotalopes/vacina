@@ -22,7 +22,7 @@ public class UsuarioDAOTest {
 		
 		Usuario us1 = new Usuario();
 
-		us1.setCpf("12345678912");
+		us1.setCpf("441.027.519-47");
 		us1.setEmail("teste@teste.com");
 		us1.setEndereco("Rua Teste, 68 - Bairro Teste");
 		us1.setNome("Andre");

@@ -11,26 +11,39 @@
 	<title>Pagina de Login</title>
 	<link href="resources/adamantium-layout/css/login.css" type="text/css"
 		rel="stylesheet" />
+
+	<link href="https://fonts.googleapis.com/css?family=Barlow"
+		rel="stylesheet" />
 </h:head>
 
 <h:body style="padding-top: 60px; background-color: #fff">
 
-	<h4 class="form-siging-header">Faça login na sua conta</h4>
-	
-	<h:form styleClass="form-login" >
-	
+	<p:growl id="msgGlobal" isticky="true" />
+
+	<h4 class="form-siging-header"
+		style="font-size: 2em; font-family: 'Barlow', sans-serif;">Faça
+		login na sua conta</h4>
+
+	<h:form styleClass="form-login">
+
 		<h:panelGrid columns="2" styleClass="grid">
-		
+
 			<p:outputLabel value="Login" />
-			<p:inputText value="" placeholder="usuario@dominio.com" />
+			<p:inputMask value="#{autenticacaoBean.usuarioLogado.cpf}"
+				mask="999.999.999-99" size="20" placeholder="Ex: 00000000000">
+				<f:validateBean />
+			</p:inputMask>
 
-			<p:outputLabel value="Senha"></p:outputLabel>
-			<p:password placeholder="Senha"></p:password>
+			<p:outputLabel value="Senha:" />
+			<p:password size="20" value="#{autenticacaoBean.usuarioLogado.senha}">
+				<f:validateBean />
+			</p:password>
 
-			<p:button value="Fazer Login" outcome="principal.xhtml"/>
-			
+			<p:commandButton value="Fazer Login" update=":msgGlobal"
+				action="#{autenticacaoBean.autenticar()}" />
+
 		</h:panelGrid>
-		
+
 	</h:form>
 
 

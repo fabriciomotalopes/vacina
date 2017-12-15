@@ -1,9 +1,9 @@
 package br.com.engenhariareversa.bean;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
-import java.util.List;
 
 import br.com.engenhariareversa.dao.AnimalDAO;
 import br.com.engenhariareversa.dao.AnimalVacinacaoDAO;

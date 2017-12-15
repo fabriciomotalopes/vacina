@@ -105,10 +105,7 @@ public class VacinaBean {
 			UsuarioDAO userDao = new UsuarioDAO();
 
 			user = userDao.buscarPorId(1L);
-
-			System.out.println(user.toString());
-			System.out.println(vacinaCadastrar.toString());
-
+			
 			vacinaCadastrar.setUsuario(user);
 
 			dao.salvar(vacinaCadastrar);
@@ -182,15 +179,15 @@ public class VacinaBean {
 		}
 
 	}
-	
-	public void vizualizarVacinas(){
+
+	public void vizualizarVacinas() {
 		try {
 
 			AnimalVacinacaoDAO animalVacinacaoDAO = new AnimalVacinacaoDAO();
 			AnimalDAO animalDAO = new AnimalDAO();
-			
+
 			Animal animal = animalDAO.buscarPorId(idAnimal);
-			
+
 			animalVacinacaos = animalVacinacaoDAO.buscarAnimal(animal);
 
 		} catch (RuntimeException ex) {
@@ -198,8 +195,5 @@ public class VacinaBean {
 			FacesUtil.adicionarMsgInfo("Vacina Editar com sucesso." + ex.getMessage());
 		}
 	}
-	
-	
 
-	
 }

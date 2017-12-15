@@ -11,12 +11,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "usuario")
 @NamedQueries({
 		@NamedQuery(name = "Usuario.listar", query = "SELECT usuario FROM Usuario usuario"),
-		@NamedQuery(name = "Usuario.buscarPorId", query = "SELECT usuario FROM Usuario usuario WHERE usuario.idUsuario = :idUsuario")
+		@NamedQuery(name = "Usuario.buscarPorId", query = "SELECT usuario FROM Usuario usuario WHERE usuario.idUsuario = :idUsuario"),
+		@NamedQuery(name = "Usuario.autenticar", query = "SELECT usuario FROM Usuario usuario WHERE usuario.cpf = :cpf AND usuario.senha = :senha")
 })
 public class Usuario {
 
@@ -31,8 +33,8 @@ public class Usuario {
 	private String nome;
 
 	@NotEmpty(message = "O campo cpf é Obrigatório.")
-	@Size(min = 1, max = 11, message = "Quanitidade de caracteres Inválido.")
-	@Column(name = "cpf", length = 11, nullable = false)
+	@CPF(message = "CPF Inválido")
+	@Column(name = "cpf", length = 14, nullable = false)
 	private String cpf;
 
 	@NotEmpty(message = "O campo e-mail é Obrigatório.")
